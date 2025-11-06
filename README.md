@@ -58,12 +58,20 @@
             justify-content: center;
             padding: 1rem;
         }
-        .card-shadow {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
         
+        /* इनपुट बॉक्स के लिए स्टाइल */
+        input[type="text"] {
+             background-color: rgba(255, 255, 255, 0.1) !important;
+             color: #FFFFFF !important;
+             border-color: #FFD700 !important;
+        }
+        input[type="text"]::placeholder {
+            color: #E0E0E0;
+            opacity: 0.7;
+        }
+
         /* मोबाइल पर बेहतर दिखने के लिए */
-        @media (max-width: 640px) {
+        @media (max-width: 600px) {
             .quiz-container {
                 padding: 0.5rem;
                 align-items: flex-start;
@@ -74,7 +82,8 @@
 </head>
 <body class="maroon-bg text-white">
     <div class="quiz-container mx-auto">
-        <div id="input-form-screen" class="w-full bg-white bg-opacity-10 backdrop-blur-sm p-8 md:p-12 rounded-xl card-shadow transition-all duration-500">
+        <!-- अपडेट: यहाँ से bg-white, bg-opacity-10, backdrop-blur-sm, और card-shadow हटा दिया गया है -->
+        <div id="input-form-screen" class="w-full p-8 md:p-12 rounded-xl transition-all duration-500">
             <h1 class="text-4xl md:text-5xl text-center mb-6 gradient-text-vibrant">सादर आमंत्रण</h1>
             <p class="text-center text-xl mb-8 text-accent">निमंत्रण देखने के लिए कृपया अपना विवरण भरें</p>
 
@@ -91,7 +100,8 @@
             </form>
         </div>
 
-        <div id="invitation-card" class="hidden w-full bg-white bg-opacity-10 backdrop-blur-sm p-8 md:p-12 rounded-xl card-shadow transition-all duration-500">
+        <!-- अपडेट: यहाँ से bg-white, bg-opacity-10, backdrop-blur-sm, और card-shadow हटा दिया गया है -->
+        <div id="invitation-card" class="hidden w-full p-8 md:p-12 rounded-xl transition-all duration-500">
             <p class="text-center text-lg text-accent mb-4">प्रिय</p>
             <h2 id="personalized-greeting" class="text-center text-3xl md:text-4xl mb-8 gradient-text-vibrant leading-tight"></h2>
             
@@ -100,7 +110,7 @@
                     "मैं श्री सुरेन्द्र कुमार यादव एवं श्रीमती ऊषा यादव आपको सपरिवार अपनी बेटी आयु0 आकांक्षा यादव संग चि0 रोहित यादव के शुभ विवाह के शुभ अवसर पर सादर आमंत्रित करते हैं। कृपया ससमय कार्यक्रम में पधारकर नवदंपति को अपना आशीर्वाद प्रदान करें।"
                 </p>
 
-                <!-- कार्यक्रम विवरण --><div class="text-center bg-white bg-opacity-5 p-4 rounded-lg">
+                <!-- कार्यक्रम विवरण --><div class="text-center p-4 rounded-lg">
                     <p class="text-gold text-2xl font-bold mb-2">कार्यक्रम विवरण</p>
                     <p class="text-xl mb-1 text-accent">
                         <span class="font-bold text-gold">दिनांक:</span> 22 नवंबर 2025 (शनिवार)
