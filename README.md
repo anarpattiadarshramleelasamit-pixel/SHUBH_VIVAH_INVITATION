@@ -137,7 +137,7 @@
     <!-- JavaScript for personalization and WhatsApp link generation -->
     <script>
         // WhatsApp contact number
-        const whatsappNumber = '8009676915'; 
+        const whatsappNumber = '918009676915'; 
 
         /**
          * Reads name and address, displays personalized greeting, and shows invitation details.
