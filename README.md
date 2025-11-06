@@ -10,9 +10,10 @@
         /* कस्टम आतिशबाजी/उत्सव थीम */
         :root {
             --primary-color: #FFD700; /* Gold */
-            --secondary-color: #FF69B4; /* Hot Pink */
+            --secondary-color: #FF1493; /* Deep Pink - Updated for Quiz */
             --text-color: #FFFFFF;
             --background-color: #1a1a2e; /* Deep Violet/Blue for night effect */
+            --quiz-text-color: #FF1493; /* Deep Pink for Quiz */
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -31,7 +32,7 @@
         .decorative-card {
             background-color: rgba(30, 30, 46, 0.95); /* Slightly lighter dark background */
             border: 3px solid var(--primary-color);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), 0 0 15px rgba(255, 105, 180, 0.5);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), 0 0 15px rgba(255, 20, 147, 0.5); /* Updated shadow for deep pink */
             animation: pulse 4s infinite alternate;
         }
 
@@ -59,20 +60,34 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
         }
 
-        /* Simple Sparkle Animation (Firework Effect) */
-        .sparkle-text {
-            animation: sparkle 1.5s infinite;
-            display: inline-block;
+        /* Quiz specific styling (Enhanced) */
+        .quiz-question {
+            color: var(--quiz-text-color); /* Deep Pink */
+            /* Stronger and more decorative glow for the quiz text */
+            text-shadow: 0 0 12px rgba(255, 20, 147, 1), 0 0 25px rgba(255, 20, 147, 0.7); /* Increased glow */
+            font-size: 1.75rem; /* Slightly larger heading */
+            font-weight: 900; /* Extra Bold */
+            margin-bottom: 0; /* Handled by parent wrapper */
+            padding: 0 5px; /* Added padding for border effect */
+            display: inline-block; /* Required for inline-block effect */
+            animation: sparkle 1.5s infinite alternate; /* Sparkle animation */
+            line-height: 1.3;
+        }
+        
+        /* New CSS for container gradient */
+        .quiz-container-enhanced {
+            /* Dark violet/pink gradient for festive mood */
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(50, 20, 50, 0.9)) !important; 
         }
 
         @keyframes pulse {
             0% { transform: scale(1); border-color: #FFD700; }
-            100% { transform: scale(1.01); border-color: #FF69B4; }
+            100% { transform: scale(1.01); border-color: #FF1493; } /* Pulse to Deep Pink */
         }
 
         @keyframes sparkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+            0%, 100% { opacity: 1; text-shadow: 0 0 12px rgba(255, 20, 147, 1); }
+            50% { opacity: 0.9; text-shadow: 0 0 35px rgba(255, 20, 147, 1); } /* More intense peak glow */
         }
     </style>
 </head>
@@ -82,7 +97,7 @@
 
         <!-- Step 1: Input Recipient Details -->
         <div id="step1">
-            <h1 class="text-4xl font-extrabold mb-6 decorative-heading">विवाह आमंत्रण</h1>
+            <h1 class="text-4xl font-extrabold mb-6 decorative-heading">शुभ विवाह आमंत्रण</h1>
             <p class="text-lg mb-8 text-gray-300">कृपया अपना विवरण दर्ज करें।</p>
             
             <div class="space-y-4">
@@ -142,12 +157,31 @@
             </div>
 
 
-            <!-- Quiz / RSVP Section -->
-            <div class="mt-6">
-                <p class="text-xl font-bold mb-4 sparkle-text text-yellow-200">
-                    आमंत्रण क्विज: क्या आप नवदंपति को अपना आशीर्वाद देने पधारेंगे?
-                </p>
-                <button onclick="sendWhatsappRSVP()" class="whatsapp-button w-full py-3 text-white font-bold text-xl rounded-lg shadow-xl flex items-center justify-center">
+            <!-- Quiz / RSVP Section (Enhanced Decoration) -->
+            <div class="mt-6 p-6 rounded-xl border-4 border-pink-600 shadow-2xl shadow-pink-900/50 quiz-container-enhanced">
+                
+                <!-- Quiz Question with Enhanced Pink Glow and Decorative Icons -->
+                <div class="flex items-center justify-center mb-4">
+                    
+                    <!-- Left SVG Icon (Firework/Star) -->
+                    <svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L9.19 8.63L2 9.24L7.54 13.9L5.82 21.03L12 17.27L18.18 21.03L16.46 13.9L22 9.24L14.81 8.63L12 2Z"/>
+                    </svg>
+                    
+                    <p class="quiz-question text-center">
+                        आमंत्रण क्विज: क्या आप नवदंपति को अपना आशीर्वाद देने पधारेंगे?
+                    </p>
+
+                    <!-- Right SVG Icon (Firework/Star) -->
+                    <svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L9.19 8.63L2 9.24L7.54 13.9L5.82 21.03L12 17.27L18.18 21.03L16.46 13.9L22 9.24L14.81 8.63L12 2Z"/>
+                    </svg>
+                </div>
+                
+                <!-- Decorative Separator -->
+                <hr class="border-t-2 border-yellow-400 w-1/3 mx-auto my-6 opacity-80 shadow-inner">
+
+                <button onclick="sendWhatsappRSVP()" class="whatsapp-button w-full py-4 text-white font-extrabold text-xl rounded-full shadow-2xl flex items-center justify-center transform hover:scale-[1.02] transition duration-300">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.04 2C6.54 2 2.05 6.5 2.05 12c0 5.09 3.65 9.38 8.44 9.99l.06-.01c.14 0 .27-.04.4-.08a1.05 1.05 0 00.32-.2.83.83 0 00.22-.3c.09-.12.16-.25.22-.38.07-.15.11-.31.11-.48v-2.18c0-.28.18-.49.46-.55a1.86 1.86 0 01.89-.04c.48.06.91.24 1.25.56.32.32.5.75.5 1.25v2.33c0 .17.04.33.11.48.06.13.13.26.22.38.09.12.2.22.32.3a1.44 1.44 0 00.4.08h.06c4.79-.61 8.44-4.9 8.44-9.99C22.04 6.5 17.55 2 12.04 2zM17.84 12.44c-.2-.04-.42-.05-.62-.05a5.53 5.53 0 00-3.37.91l-.22.14-1.12-.48a.42.42 0 01-.1-.04c-.37-.15-1.14-.52-1.14-1.29 0-.46.33-.8.67-1.1.28-.24.63-.4.92-.5a.5.5 0 00.2-.18.47.47 0 00.06-.29v-1.1a1.27 1.27 0 00-.06-.38c-.08-.18-.18-.34-.33-.46-.57-.42-1.29-.65-2.07-.65-1.63 0-2.85 1.34-3.04 3.01l-.01.12c0 .76.16 1.3.47 1.76l.1.18c.2.3.42.5.64.67a6.2 6.2 0 002.34 1.45l.13.04.22-.09.28-.11c.16-.07.3-.15.43-.25.13-.1.25-.22.35-.35.1-.13.18-.28.23-.45.05-.17.07-.34.07-.52a.45.45 0 00-.04-.21l-.1-.2a.42.42 0 01-.02-.18c-.02-.13-.03-.26-.03-.4a.6.6 0 01.07-.31c.07-.12.18-.21.32-.27.28-.12.59-.18.91-.18.28 0 .56.05.82.15.26.1.48.23.67.4.28.24.5.53.64.87.14.34.2.71.2 1.1a1.28 1.28 0 01-.1 1.22c-.1.2-.24.37-.4.5l-.26.22c-.2.17-.43.32-.67.44-.09.05-.18.1-.28.13s-.2.04-.3.04a.5.5 0 00-.47.6c.03.1.09.18.18.25.18.15.4.24.64.24h.02a.85.85 0 00.4-.08l.18-.14c.26-.2.48-.44.64-.72.16-.28.24-.6.24-.96 0-.36-.08-.7-.24-1.04-.16-.34-.38-.63-.64-.86-.26-.24-.55-.42-.87-.55z"/>
                     </svg>
@@ -251,5 +285,4 @@
 
     </script>
 </body>
-</html># -_-_-
-विवाह आमंत्रण 
+</html>
