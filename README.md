@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>शुभ विवाह आमंत्रण</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* कस्टम आतिशबाजी/उत्सव थीम */
         :root {
@@ -14,6 +13,8 @@
             --text-color: #FFFFFF;
             --background-color: #1a1a2e; /* Deep Violet/Blue for night effect */
             --quiz-text-color: #FF1493; /* Deep Pink for Quiz */
+            --maroon-color: #800000; /* Standard Maroon */
+            --glowing-maroon: #A52A2A; /* Brighter Maroon for glow */
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -80,6 +81,15 @@
             background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(50, 20, 50, 0.9)) !important; 
         }
 
+        /* Maroon Details Styling (New) */
+        .maroon-details {
+            color: var(--glowing-maroon); /* Use brighter maroon for text */
+            text-shadow: 0 0 8px var(--glowing-maroon), 0 0 15px rgba(165, 42, 42, 0.5); /* Glowing effect */
+            font-weight: bold;
+            font-size: 1.25rem; /* Slightly larger for emphasis */
+            animation: text-glow 3s infinite alternate;
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); border-color: #FFD700; }
             100% { transform: scale(1.01); border-color: #FF1493; } /* Pulse to Deep Pink */
@@ -89,14 +99,18 @@
             0%, 100% { opacity: 1; text-shadow: 0 0 12px rgba(255, 20, 147, 1); }
             50% { opacity: 0.9; text-shadow: 0 0 35px rgba(255, 20, 147, 1); } /* More intense peak glow */
         }
+
+        @keyframes text-glow {
+            0% { text-shadow: 0 0 8px var(--glowing-maroon); }
+            100% { text-shadow: 0 0 15px var(--glowing-maroon), 0 0 25px rgba(165, 42, 42, 0.7); }
+        }
     </style>
 </head>
 <body class="p-4">
 
     <div id="app" class="max-w-xl w-full p-6 md:p-10 rounded-xl decorative-card text-center">
 
-        <!-- Step 1: Input Recipient Details -->
-        <div id="step1">
+        <!-- Step 1: Input Recipient Details --><div id="step1">
             <h1 class="text-4xl font-extrabold mb-6 decorative-heading">शुभ विवाह आमंत्रण</h1>
             <p class="text-lg mb-8 text-gray-300">कृपया अपना विवरण दर्ज करें।</p>
             
@@ -112,15 +126,13 @@
             <div id="error-message" class="text-red-400 mt-4 hidden">कृपया नाम और पता दोनों भरें।</div>
         </div>
 
-        <!-- Step 2: Invitation Display and Quiz/RSVP -->
-        <div id="step2" class="hidden">
+        <!-- Step 2: Invitation Display and Quiz/RSVP --><div id="step2" class="hidden">
             <h1 class="text-4xl font-extrabold mb-2 decorative-heading">
                 <span id="personalizedGreeting"></span>
             </h1>
             <p class="text-sm text-gray-400 mb-6">हमें आपकी उपस्थिति से बहुत खुशी होगी।</p>
             
-            <!-- Main Invitation Text -->
-            <div class="text-left bg-white bg-opacity-5 p-4 rounded-xl mb-6 border border-yellow-500">
+            <!-- Main Invitation Text --><div class="text-left bg-white bg-opacity-5 p-4 rounded-xl mb-6 border border-yellow-500">
                 <p class="text-xl mb-4 font-semibold text-yellow-300">
                     मैं श्री सुरेन्द्र कुमार यादव एवं श्रीमती ऊषा यादव
                 </p>
@@ -128,43 +140,36 @@
                     आपको सपरिवार अपनी बेटी आयु0 आकांक्षा यादव संग चि0 रोहित यादव के शुभ विवाह के शुभ अवसर पर सादर आमंत्रित करते हैं। कृपया ससमय कार्यक्रम में पधारकर नवदंपति को अपना आशीर्वाद प्रदान करें।
                 </p>
 
-                <!-- Wedding Details -->
-                <div class="space-y-2 mt-6 p-3 border-t border-b border-gray-600">
-                    <p class="text-lg font-bold text-pink-400">कार्यक्रम दिनांक: 22 नवंबर 2025 (शनिवार)</p>
-                    <p class="text-sm text-gray-300">
+                <!-- Wedding Details (Updated to Maroon Glowing) --><div class="space-y-2 mt-6 p-3 border-t border-b border-gray-600">
+                    <p class="maroon-details">कार्यक्रम दिनांक: 22 नवंबर 2025 (शनिवार)</p>
+                    <p class="maroon-details">
                         कार्यक्रम स्थान: समस्त वैवाहिक कार्यक्रम हमारे निवास स्थान ग्राम कांटी (रोहिला नगर) पोस्ट इटौरा जिला बाराबंकी में सम्पन्न होंगे।
                     </p>
                 </div>
                 
-                <!-- Bal Manuhar -->
-                <p class="mt-6 text-center text-sm italic text-cyan-300">
+                <!-- Bal Manuhar --><p class="mt-6 text-center text-sm italic text-cyan-300">
                     **बाल मनुहार:** फलक से चांद उतरेगा तारे मुस्कुराएंगे, हमें खुशी तब होगी जब मेली दीदी की शादी में आएंगे।
                 </p>
 
             </div>
 
-            <!-- Wedding Card Image Placeholder/Link -->
-            <div class="mb-8 p-4 border-2 border-dashed border-gray-600 rounded-lg">
+            <!-- Wedding Card Image Placeholder/Link --><div class="mb-8 p-4 border-2 border-dashed border-gray-600 rounded-lg">
                 <p class="text-lg font-semibold text-white mb-2">विवाह कार्ड का डिजिटल दृश्य</p>
                 <p class="text-sm text-gray-400 mb-4">
                     यहाँ आपका विवाह कार्ड दिखेगा।
                 </p>
-                <!-- Using an actual image placeholder URL for aesthetics -->
-                <img src="https://placehold.co/400x250/9932CC/ffffff?text=विवाह+कार्ड+Placeholder" alt="विवाह कार्ड का डिजिटल दृश्य" class="w-full h-auto rounded-md object-cover max-h-64 mx-auto">
+                <!-- Using an actual image placeholder URL for aesthetics --><img src="https://placehold.co/400x250/9932CC/ffffff?text=विवाह+कार्ड+Placeholder" alt="विवाह कार्ड का डिजिटल दृश्य" class="w-full h-auto rounded-md object-cover max-h-64 mx-auto">
                 <a href="https://drive.google.com/file/d/1s7nPdHdDIgLtYMDpv3Y7Nqc0cFq8zMhi/view?usp=drivesdk" target="_blank" class="text-yellow-400 hover:text-yellow-300 underline mt-2 block text-sm">
                     (मूल कार्ड देखने के लिए यहाँ क्लिक करें)
                 </a>
             </div>
 
 
-            <!-- Quiz / RSVP Section (Enhanced Decoration) -->
-            <div class="mt-6 p-6 rounded-xl border-4 border-pink-600 shadow-2xl shadow-pink-900/50 quiz-container-enhanced">
+            <!-- Quiz / RSVP Section (Enhanced Decoration) --><div class="mt-6 p-6 rounded-xl border-4 border-pink-600 shadow-2xl shadow-pink-900/50 quiz-container-enhanced">
                 
-                <!-- Quiz Question with Enhanced Pink Glow and Decorative Icons -->
-                <div class="flex items-center justify-center mb-4">
+                <!-- Quiz Question with Enhanced Pink Glow and Decorative Icons --><div class="flex items-center justify-center mb-4">
                     
-                    <!-- Left SVG Icon (Firework/Star) -->
-                    <svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                    <!-- Left SVG Icon (Firework/Star) --><svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2L9.19 8.63L2 9.24L7.54 13.9L5.82 21.03L12 17.27L18.18 21.03L16.46 13.9L22 9.24L14.81 8.63L12 2Z"/>
                     </svg>
                     
@@ -172,14 +177,12 @@
                         आमंत्रण क्विज: क्या आप नवदंपति को अपना आशीर्वाद देने पधारेंगे?
                     </p>
 
-                    <!-- Right SVG Icon (Firework/Star) -->
-                    <svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                    <!-- Right SVG Icon (Firework/Star) --><svg class="w-8 h-8 text-yellow-400 mx-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2L9.19 8.63L2 9.24L7.54 13.9L5.82 21.03L12 17.27L18.18 21.03L16.46 13.9L22 9.24L14.81 8.63L12 2Z"/>
                     </svg>
                 </div>
                 
-                <!-- Decorative Separator -->
-                <hr class="border-t-2 border-yellow-400 w-1/3 mx-auto my-6 opacity-80 shadow-inner">
+                <!-- Decorative Separator --><hr class="border-t-2 border-yellow-400 w-1/3 mx-auto my-6 opacity-80 shadow-inner">
 
                 <button onclick="sendWhatsappRSVP()" class="whatsapp-button w-full py-4 text-white font-extrabold text-xl rounded-full shadow-2xl flex items-center justify-center transform hover:scale-[1.02] transition duration-300">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -193,8 +196,7 @@
 
         </div>
 
-        <!-- Message Box (Instead of alert) -->
-        <div id="message-box" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm items-center justify-center hidden z-50">
+        <!-- Message Box (Instead of alert) --><div id="message-box" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm items-center justify-center hidden z-50">
             <div class="bg-white p-6 rounded-lg shadow-2xl max-w-sm mx-auto text-black">
                 <h3 id="message-title" class="text-xl font-bold mb-4"></h3>
                 <p id="message-content" class="mb-6"></p>
