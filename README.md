@@ -20,7 +20,7 @@
             color: #A9E4D4; /* हल्का हरा/सियान उच्चारण */
         }
         .quiz-container {
-            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-family: 'Tiro Devangari Sanskrit', serif;
             max-width: 900px;
             min-height: 100vh;
             display: flex;
@@ -95,8 +95,9 @@
 
                 <!-- बाल मनुहार --><div class="text-center p-4 rounded-lg border-2 border-dashed border-accent">
                     <p class="text-gold text-xl font-bold mb-2">बाल मनुहार</p>
-                    <p class="text-accent italic">
+                    <p class="text-accent italic leading-snug">
                         "फलक से चांद उतरेगा तारे मुस्कुराएंगे, हमें खुशी तब होगी जब मेली दीदी की शादी में आएंगे,,"
+                        <br><span class="text-gold font-bold not-italic">- अक्षत यादव</span>
                     </p>
                 </div>
             </div>
