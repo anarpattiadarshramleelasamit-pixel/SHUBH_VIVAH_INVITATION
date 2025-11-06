@@ -13,6 +13,36 @@
         .maroon-bg {
             background-color: #581845; /* गहरा मैरून/जामुनी */
         }
+        
+        /* रंगीन अक्षरों के लिए ग्रेडिएंट और चमक */
+        .gradient-text-vibrant {
+            background: linear-gradient(45deg, #FFD700, #FFA07A, #FF69B4, #A9E4D4, #ADD8E6); /* गोल्ड, हल्का नारंगी, गहरा गुलाबी, सियान, हल्का नीला */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7), /* सफेद चमक */
+                         0 0 15px rgba(255, 255, 255, 0.5); /* हल्की और बड़ी सफेद चमक */
+        }
+        
+        /* मुख्य आमंत्रण संदेश के लिए विशेष चमक */
+        .invitation-text-glow {
+            color: #FFD700; /* गोल्ड बेस कलर */
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(255, 215, 0, 0.8), /* गोल्ड चमक */
+                0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 255, 255, 0.4); /* सफेद हल्की चमक */
+        }
+
+        /* बाल मनुहार नाम के लिए अलग चमक */
+        .akshat-name-glow {
+            color: #FFC0CB; /* गुलाबी बेस कलर */
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(255, 192, 203, 0.8), /* गुलाबी चमक */
+                0 0 10px rgba(255, 192, 203, 0.6);
+        }
+
         .text-gold {
             color: #FFD700; /* गोल्ड रंग */
         }
@@ -20,7 +50,7 @@
             color: #A9E4D4; /* हल्का हरा/सियान उच्चारण */
         }
         .quiz-container {
-            font-family: 'Tiro Devangari Sanskrit', serif;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
             max-width: 900px;
             min-height: 100vh;
             display: flex;
@@ -28,23 +58,10 @@
             justify-content: center;
             padding: 1rem;
         }
-        /* रंगीन अक्षरों के लिए ग्रेडिएंट */
-        .gradient-text {
-            background: linear-gradient(45deg, #FFD700, #FFA07A, #A9E4D4); /* गोल्ड, हल्का नारंगी, और सियान का मिक्स */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
         .card-shadow {
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
         
-        /* चमकदार गुलाबी प्रभाव */
-        .glow-effect {
-            text-shadow: 0 0 8px rgba(255, 192, 203, 0.8), /* हल्का गुलाबी चमक */
-                         0 0 15px rgba(255, 105, 180, 0.6); /* गहरा गुलाबी चमक */
-        }
-
         /* मोबाइल पर बेहतर दिखने के लिए */
         @media (max-width: 640px) {
             .quiz-container {
@@ -58,7 +75,7 @@
 <body class="maroon-bg text-white">
     <div class="quiz-container mx-auto">
         <div id="input-form-screen" class="w-full bg-white bg-opacity-10 backdrop-blur-sm p-8 md:p-12 rounded-xl card-shadow transition-all duration-500">
-            <h1 class="text-4xl md:text-5xl text-center mb-6 gradient-text">सादर आमंत्रण</h1>
+            <h1 class="text-4xl md:text-5xl text-center mb-6 gradient-text-vibrant">सादर आमंत्रण</h1>
             <p class="text-center text-xl mb-8 text-accent">निमंत्रण देखने के लिए कृपया अपना विवरण भरें</p>
 
             <form id="details-form" class="space-y-6">
@@ -76,10 +93,10 @@
 
         <div id="invitation-card" class="hidden w-full bg-white bg-opacity-10 backdrop-blur-sm p-8 md:p-12 rounded-xl card-shadow transition-all duration-500">
             <p class="text-center text-lg text-accent mb-4">प्रिय</p>
-            <h2 id="personalized-greeting" class="text-center text-3xl md:text-4xl mb-8 gradient-text leading-tight"></h2>
+            <h2 id="personalized-greeting" class="text-center text-3xl md:text-4xl mb-8 gradient-text-vibrant leading-tight"></h2>
             
             <div class="space-y-6">
-                <!-- मुख्य निमंत्रण संदेश - अब गुलाबी और चमकदार --><p class="text-center text-xl md:text-2xl text-pink-300 font-bold glow-effect leading-relaxed border-b border-gold pb-4">
+                <!-- मुख्य निमंत्रण संदेश - रंगीन और चमकदार --><p class="text-center text-xl md:text-2xl invitation-text-glow leading-relaxed border-b border-gold pb-4">
                     "मैं श्री सुरेन्द्र कुमार यादव एवं श्रीमती ऊषा यादव आपको सपरिवार अपनी बेटी आयु0 आकांक्षा यादव संग चि0 रोहित यादव के शुभ विवाह के शुभ अवसर पर सादर आमंत्रित करते हैं। कृपया ससमय कार्यक्रम में पधारकर नवदंपति को अपना आशीर्वाद प्रदान करें।"
                 </p>
 
@@ -97,7 +114,7 @@
                     <p class="text-gold text-xl font-bold mb-2">बाल मनुहार</p>
                     <p class="text-accent italic leading-snug">
                         "फलक से चांद उतरेगा तारे मुस्कुराएंगे, हमें खुशी तब होगी जब मेली दीदी की शादी में आएंगे,,"
-                        <br><span class="text-gold font-bold not-italic">- अक्षत यादव</span>
+                        <br><span class="akshat-name-glow not-italic">- अक्षत यादव</span>
                     </p>
                 </div>
             </div>
