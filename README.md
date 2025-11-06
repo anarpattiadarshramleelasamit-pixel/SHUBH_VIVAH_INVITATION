@@ -13,8 +13,8 @@
             --text-color: #FFFFFF;
             --background-color: #1a1a2e; /* Deep Violet/Blue for night effect */
             --quiz-text-color: #FF1493; /* Deep Pink for Quiz */
-            --maroon-color: #800000; /* Standard Maroon */
-            --glowing-maroon: #A52A2A; /* Brighter Maroon for glow */
+            --maroon-color: #800000; /* Standard Maroon (Legacy) */
+            --glowing-maroon: #A52A2A; /* Brighter Maroon for glow (Legacy) */
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -81,13 +81,13 @@
             background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(50, 20, 50, 0.9)) !important; 
         }
 
-        /* Maroon Details Styling (New) */
+        /* Maroon Details Styling (Now Gold Highlight for High Visibility) */
         .maroon-details {
-            color: var(--glowing-maroon); /* Use brighter maroon for text */
-            text-shadow: 0 0 8px var(--glowing-maroon), 0 0 15px rgba(165, 42, 42, 0.5); /* Glowing effect */
+            color: var(--primary-color); /* Changed to Gold for visibility */
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px rgba(255, 215, 0, 0.7); /* Stronger Gold Glow */
             font-weight: bold;
             font-size: 1.25rem; /* Slightly larger for emphasis */
-            animation: text-glow 3s infinite alternate;
+            animation: text-glow 3s infinite alternate; /* Using generic keyframe name */
         }
 
         @keyframes pulse {
@@ -100,9 +100,10 @@
             50% { opacity: 0.9; text-shadow: 0 0 35px rgba(255, 20, 147, 1); } /* More intense peak glow */
         }
 
+        /* Updated text-glow for Gold color */
         @keyframes text-glow {
-            0% { text-shadow: 0 0 8px var(--glowing-maroon); }
-            100% { text-shadow: 0 0 15px var(--glowing-maroon), 0 0 25px rgba(165, 42, 42, 0.7); }
+            0% { text-shadow: 0 0 10px var(--primary-color); }
+            100% { text-shadow: 0 0 25px var(--primary-color), 0 0 40px rgba(255, 215, 0, 0.9); }
         }
     </style>
 </head>
@@ -140,7 +141,8 @@
                     आपको सपरिवार अपनी बेटी आयु0 आकांक्षा यादव संग चि0 रोहित यादव के शुभ विवाह के शुभ अवसर पर सादर आमंत्रित करते हैं। कृपया ससमय कार्यक्रम में पधारकर नवदंपति को अपना आशीर्वाद प्रदान करें।
                 </p>
 
-                <!-- Wedding Details (Updated to Maroon Glowing) --><div class="space-y-2 mt-6 p-3 border-t border-b border-gray-600">
+                <!-- Wedding Details (Updated to Gold Glowing for visibility) --><div class="space-y-2 mt-6 p-3 border-t border-b border-gray-600">
+                    <!-- Maroon-details class now uses Gold color and stronger glow -->
                     <p class="maroon-details">कार्यक्रम दिनांक: 22 नवंबर 2025 (शनिवार)</p>
                     <p class="maroon-details">
                         कार्यक्रम स्थान: समस्त वैवाहिक कार्यक्रम हमारे निवास स्थान ग्राम कांटी (रोहिला नगर) पोस्ट इटौरा जिला बाराबंकी में सम्पन्न होंगे।
