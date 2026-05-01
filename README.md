@@ -1,215 +1,219 @@
+```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>विवाह आमंत्रण - आकांक्षा संग रोहित</title>
-    <!-- Tailwind CSS CDN -->
+    <title>शुभ विवाह आमंत्रण</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    // Custom Maroon and Gold color palette
-                    colors: {
-                        'maroon-deep': '#800000',
-                        'maroon-dark': '#5c0000',
-                        'gold-accent': '#FFD700',
-                        'cream-white': '#FFFDD0',
-                    },
-                    fontFamily: {
-                        'serif': ['Garamond', 'Georgia', 'serif'],
-                        'sans': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for decoration and Hindi font readability */
+        :root {
+            --card-yellow: #ffb74d; 
+            --ink-maroon: #7b1313; 
+        }
+
         body {
-            font-family: 'sans', sans-serif;
-            background-color: #5c0000; /* Deep Maroon fallback */
+            background-color: #1a1a1a;
+            font-family: 'Tiro Devanagari Hindi', serif;
+            margin: 0;
+            padding: 10px;
         }
-        .decorative-border {
-            border: 4px solid #FFD700; /* Gold border */
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        .main-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background-color: var(--card-yellow);
+            border: 5px double var(--ink-maroon);
+            color: var(--ink-maroon);
+            padding: 30px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+            position: relative;
         }
-        .header-text {
-            /* Colorful, decorative text */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            letter-spacing: 1px;
+
+        .name-highlight {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: block;
+            margin: 2px 0;
         }
-        .rsvp-button {
-            transition: all 0.3s ease;
+
+        .relation-text {
+            font-size: 0.95rem;
+            font-weight: 600;
         }
-        .rsvp-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(255, 215, 0, 0.4);
+
+        .section-divider {
+            height: 1px;
+            background: var(--ink-maroon);
+            margin: 15px 0;
+            opacity: 0.4;
         }
-        /* Mobile adjustments */
-        @media (max-width: 640px) {
-            .container {
-                padding: 1rem;
-            }
+
+        #input-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
     </style>
 </head>
-<body class="bg-maroon-dark min-h-screen text-cream-white flex flex-col items-center py-8 px-4">
+<body>
 
-    <!-- Main Invitation Card Container -->
-    <div class="w-full max-w-2xl bg-maroon-deep decorative-border p-6 md:p-10 text-center space-y-8">
-        
-        <!-- Opening Header -->
-        <h1 id="greeting-title" class="text-3xl md:text-5xl font-serif header-text text-gold-accent mb-6">
-            शुभ विवाह आमंत्रण
-        </h1>
-
-        <!-- Recipient Personalization Section (Input) -->
-        <div class="bg-red-900 p-4 rounded-lg shadow-inner space-y-4">
-            <h2 class="text-xl font-sans text-cream-white">कृपया अपना विवरण दर्ज करें</h2>
-            <input type="text" id="recipientName" placeholder="आपका नाम" class="w-full p-3 rounded-lg bg-red-800 text-cream-white placeholder-cream-white placeholder-opacity-75 focus:outline-none focus:ring-2 focus:ring-gold-accent border border-gold-accent/50" required>
-            <input type="text" id="recipientAddress" placeholder="आपका पता / शहर" class="w-full p-3 rounded-lg bg-red-800 text-cream-white placeholder-cream-white placeholder-opacity-75 focus:outline-none focus:ring-2 focus:ring-gold-accent border border-gold-accent/50" required>
-            <button onclick="displayPersonalizedGreeting()" class="w-full py-2 bg-gold-accent text-maroon-dark font-bold rounded-lg hover:bg-yellow-400 transition duration-300">
-                आमंत्रण पत्र देखें
-            </button>
-        </div>
-
-        <!-- Personalized Greeting (Display) -->
-        <p id="personalized-greeting" class="text-2xl font-serif text-gold-accent hidden">
-            <!-- Greeting will be inserted here by JS -->
-        </p>
-
-        <!-- Main Invitation Details -->
-        <div id="invitation-details" class="space-y-6 text-left p-4 bg-maroon-dark rounded-lg hidden">
-            
-            <h3 class="text-3xl font-serif text-gold-accent text-center border-b pb-2 border-gold-accent/50">
-                आकांक्षा संग रोहित
-            </h3>
-            
-            <p class="text-lg text-cream-white leading-relaxed">
-                "मैं श्री सुरेन्द्र कुमार यादव एवं श्रीमती ऊषा यादव आपको सपरिवार अपनी बेटी आयु0 आकांक्षा यादव संग चि0 रोहित यादव के शुभ विवाह के शुभ अवसर पर सादर आमंत्रित करते हैं। कृपया ससमय कार्यक्रम में पधारकर नवदंपति को अपना आशीर्वाद प्रदान करें।"
-            </p>
-
-            <!-- Date and Venue Block -->
-            <div class="bg-red-900 p-4 rounded-lg decorative-border">
-                <p class="text-xl font-bold text-gold-accent">कार्यक्रम दिनांक:</p>
-                <p class="text-2xl font-serif text-cream-white">22 नवंबर 2025, दिन शनिवार</p>
-                
-                <p class="mt-4 text-xl font-bold text-gold-accent">कार्यक्रम स्थान:</p>
-                <p class="text-lg text-cream-white">समस्त वैवाहिक कार्यक्रम हमारे निवास स्थान ग्राम कांटी (रोहिला नगर) पोस्ट इटौरा जिला बाराबंकी में सम्पन्न होंगे।</p>
-            </div>
-
-            <!-- Bal Manuhar (Child's Request) -->
-            <div class="p-4 rounded-lg border-t border-gold-accent/50 text-center">
-                <p class="text-xl font-bold text-gold-accent mb-2">बाल मनुहार:</p>
-                <p class="italic text-lg text-cream-white leading-snug">
-                    फलक से चांद उतरेगा तारे मुस्कुराएंगे,<br>
-                    हमें खुशी तब होगी जब मेली दीदी की शादी में आएंगे,
-                </p>
-                <p class="text-xl font-bold mt-2 text-gold-accent"> - अक्षत यादव</p>
-            </div>
-
-            <!-- Wedding Card Link -->
-            <div class="text-center pt-4 border-t border-gold-accent/50">
-                <p class="text-lg font-bold text-gold-accent mb-2">विवाह कार्ड लिंक (पूर्ण विवरण के लिए):</p>
-                <a href="https://drive.google.com/file/d/1s7nPdHdDIgLtYMDpv3Y7Nqc0cFq8zMhi/view?usp=drivesdk" target="_blank" class="text-cream-white hover:text-gold-accent underline p-2 bg-red-700 rounded-lg transition duration-300">
-                    वेडिंग कार्ड देखें
-                </a>
-                <p class="text-sm mt-2 text-cream-white/70">लिंक नए टैब में खुलेगा।</p>
-            </div>
-
-            <!-- Quiz / Confirmation Section -->
-            <div class="pt-6 border-t border-gold-accent/50 text-center space-y-4">
-                <h2 class="text-2xl font-bold text-gold-accent">उपस्थिति की पुष्टि (RSVP)</h2>
-                <p class="text-lg text-cream-white">अपनी उपस्थिति की पुष्टि करने के लिए नीचे दिए गए बटन पर क्लिक करें। यह आपके विवरण के साथ सीधे WhatsApp पर एक संदेश भेजेगा।</p>
-                
-                <a id="whatsapp-link" href="#" target="_blank" class="inline-block rsvp-button py-3 px-8 bg-green-500 text-white font-bold text-xl rounded-full shadow-lg hover:bg-green-600 transition duration-300">
-                    WhatsApp पर पुष्टि करें
-                </a>
-                <p id="whatsapp-info" class="text-sm text-cream-white/70 mt-2">पुष्टि संदेश 8009676915 पर भेजा जाएगा।</p>
-            </div>
-
+    <!-- प्रविष्टि स्क्रीन -->
+    <div id="input-modal">
+        <div class="bg-white p-8 rounded-2xl w-full max-w-sm text-center shadow-2xl border-4 border-orange-400">
+            <img src="https://img.icons8.com/color/96/ganesh.png" class="mx-auto w-16 mb-4" alt="Ganesh ji">
+            <h2 class="text-2xl font-bold text-red-900 mb-2">सादर आमंत्रण</h2>
+            <p class="text-sm text-gray-500 mb-6">विवाह कार्ड देखने के लिए अपना नाम लिखें</p>
+            <input type="text" id="guest-input" placeholder="आपका शुभ नाम" class="w-full p-3 border-2 border-orange-300 rounded-lg mb-4 text-center outline-none focus:border-red-900">
+            <button onclick="unlockInvitation()" class="w-full bg-red-900 text-white py-3 rounded-lg font-bold shadow-lg hover:bg-red-800 transition">कार्ड खोलें</button>
         </div>
     </div>
 
-    <!-- JavaScript for personalization and WhatsApp link generation -->
+    <!-- मुख्य कार्ड -->
+    <div id="card-content" class="main-card hidden">
+        
+        <div class="text-center mb-6">
+            <p class="text-[10px] sm:text-xs">मंगलम भगवान विष्णु, मंगलम गरुणध्वजः।<br>मंगलम पुण्डरीकाक्षः, मंगलाय तनोहरिः ॥</p>
+            <img src="https://img.icons8.com/color/96/ganesh.png" class="mx-auto w-12 my-3" alt="Ganesh icon">
+            <p class="font-bold">॥ श्री गणेशाय नमः ॥</p>
+        </div>
+
+        <div class="mb-6 text-left">
+            <p class="italic text-sm">मान्यवर,</p>
+            <p id="guest-name-display" class="text-xl font-bold border-b-2 border-dotted border-red-900 inline-block px-2"></p>
+        </div>
+
+        <div class="text-center">
+            <p class="text-xs mb-4 leading-relaxed">
+                परम स्नेही स्वजन, सर्व मंगल मांगल्ये शिवे सर्वार्थ साधिके।<br>
+                शरण्ये त्रयम्बके गौरी नारायणी नमोस्तुते ॥
+            </p>
+
+            <div class="border-2 border-red-900 p-5 rounded-lg bg-white bg-opacity-20 mb-6">
+                <!-- प्रथम जोड़ी -->
+                <div class="mb-4">
+                    <p class="text-sm">आयु०कु० <span class="name-highlight">कामनी</span></p>
+                    <p class="relation-text">सुपुत्री- श्री अजय कुमार यादव</p>
+                    
+                    <p class="font-bold my-2 text-lg">संग</p>
+                    
+                    <p class="text-sm">चि० <span class="name-highlight">कृष्ण</span></p>
+                    <p class="relation-text">सुपुत्र- श्री रामदेव यादव</p>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <!-- द्वितीय जोड़ी -->
+                <div>
+                    <p class="text-sm">आयु०कु० <span class="name-highlight">राजनन्दिनी</span></p>
+                    <p class="relation-text">सुपुत्री- श्री अजय कुमार यादव</p>
+                    
+                    <p class="font-bold my-2 text-lg">संग</p>
+                    
+                    <p class="text-sm">चि० <span class="name-highlight">साचिन</span></p>
+                    <p class="relation-text">सुपुत्र- श्री हरिश्चन्द्र यादव</p>
+                </div>
+            </div>
+
+            <p class="text-sm font-bold mb-6">
+                की मांगलिक बेला पर पधार कर वर-वधू को<br>अपना आशीर्वाद प्रदान कर हमें अनुग्रहित करें।
+            </p>
+        </div>
+
+        <!-- कार्यक्रम -->
+        <div class="bg-white bg-opacity-40 p-4 rounded-lg border border-red-900 mb-6">
+            <h3 class="font-bold text-center underline mb-3 text-sm">॥ वैवाहिक कार्यक्रम ॥</h3>
+            <div class="grid grid-cols-2 gap-2 text-[10px] sm:text-xs text-center">
+                <div class="border-r border-red-900">
+                    <p class="font-bold">तेल पूजन</p>
+                    <p>01 मई 2026 (शुक्रवार)</p>
+                </div>
+                <div>
+                    <p class="font-bold">मातृ पूजन</p>
+                    <p>02 मई 2026 (शनिवार)</p>
+                </div>
+                <div class="border-t border-r border-red-900 pt-2 mt-2">
+                    <p class="font-bold">शुभ विवाह</p>
+                    <p>03 मई 2026 (रविवार)</p>
+                </div>
+                <div class="border-t border-red-900 pt-2 mt-2">
+                    <p class="font-bold">विदाई</p>
+                    <p>04 मई 2026 (सोमवार)</p>
+                </div>
+            </div>
+            <p class="text-center mt-3 text-[10px] font-bold">स्थल: ग्राम-अनार पट्टी मजरे-सरवन टिकठा, पो० बेलपुर जिला-बाराबंकी</p>
+        </div>
+
+        <!-- दर्शनाभिलाषी / विनीत -->
+        <div class="grid grid-cols-2 gap-4 text-[10px] mt-6">
+            <div>
+                <p class="font-bold underline mb-1">दर्शनाभिलाषी</p>
+                <p>रामपाल, संदीप, अमन, अमित, अखिलेश, अमलेश, सूर्यांश, सक्षम (रियांश), अनुज, अंकित एवं समस्त यादव परिवार।</p>
+            </div>
+            <div class="text-right">
+                <p class="font-bold underline mb-1">विनीत</p>
+                <p>श्री अजय कुमार यादव</p>
+                <p>श्री रंजीत कुमार यादव</p>
+                <p>मो० 7525987548</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="font-bold underline text-[10px]">स्वागतकांक्षी</p>
+            <p class="text-[10px]">भगवान बक्श सिंह यादव, रामू यादव, अमरनाथ बक्श सिंह (पप्पू)</p>
+        </div>
+
+        <!-- बाल आग्रह -->
+        <div class="my-6 text-center italic text-xs border border-red-900 p-2 bg-yellow-100 rounded">
+            <p class="font-bold mb-1">॥ बाल आग्रह ॥</p>
+            "हल्दी है चन्दन है रिश्तों का बन्धन है,<br>मेरी दीदी की शादी में आपका अभिनन्दन है।"<br>
+            <span class="font-bold text-red-900">— सृष्टि, जानवी, परी —</span>
+        </div>
+
+        <!-- पुष्टि बटन -->
+        <div class="mt-8 space-y-3">
+            <button onclick="confirmPresence()" class="w-full bg-red-900 text-white py-3 rounded-lg font-bold shadow-lg hover:bg-red-800 transition">
+                हम जरूर आएंगे (पुष्टि करें)
+            </button>
+            <a id="wa-confirm" href="#" target="_blank" class="hidden w-full flex items-center justify-center gap-2 py-3 bg-green-600 text-white rounded-lg font-bold shadow-lg">
+                <img src="https://img.icons8.com/color/48/whatsapp.png" class="w-5" alt="WA"> WhatsApp पर सूचना भेजें
+            </a>
+            <p class="text-[9px] text-center opacity-50">मुद्रक: साँई स्टूडियो दिलावलपुर | मो० 8400203006</p>
+        </div>
+    </div>
+
     <script>
-        // WhatsApp contact number
-        const whatsappNumber = '918009676915'; 
-
-        /**
-         * Reads name and address, displays personalized greeting, and shows invitation details.
-         */
-        function displayPersonalizedGreeting() {
-            const nameInput = document.getElementById('recipientName');
-            const addressInput = document.getElementById('recipientAddress');
-            const greetingElement = document.getElementById('personalized-greeting');
-            const detailsElement = document.getElementById('invitation-details');
-            const whatsappLink = document.getElementById('whatsapp-link');
-            
-            const recipientName = nameInput.value.trim();
-            const recipientAddress = addressInput.value.trim();
-
-            // Simple validation
-            if (!recipientName || !recipientAddress) {
-                // Instead of alert(), we use a custom message box style (or just visually highlight the inputs)
-                nameInput.classList.add('border-red-500');
-                addressInput.classList.add('border-red-500');
-                alertMessage('कृपया अपना नाम और पता दोनों दर्ज करें।');
+        function unlockInvitation() {
+            const name = document.getElementById('guest-input').value;
+            if (!name) {
+                alert("कृपया अपना नाम लिखें");
                 return;
-            } else {
-                nameInput.classList.remove('border-red-500');
-                addressInput.classList.remove('border-red-500');
             }
-
-            // 1. Display Personalized Greeting
-            greetingElement.innerHTML = `प्रिय <span class="text-yellow-300 font-bold">${recipientName}</span>, <br> ${recipientAddress} से, आपको सपरिवार हार्दिक आमंत्रण!`;
-            
-            // Show all invitation elements
-            greetingElement.classList.remove('hidden');
-            detailsElement.classList.remove('hidden');
-
-            // 2. Generate WhatsApp Confirmation Message and Link
-            const message = `मैं ${recipientName} हूँ और मैं ${recipientAddress} से विवाह समारोह के लिए अपनी उपस्थिति की पुष्टि करता हूँ। धन्यवाद।`;
-            const encodedMessage = encodeURIComponent(message);
-            
-            // WhatsApp link format
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            whatsappLink.href = whatsappURL;
-
-            // Optional: Hide input section after submission (or disable it)
-            nameInput.disabled = true;
-            addressInput.disabled = true;
-            nameInput.parentElement.querySelector('button').disabled = true;
-            nameInput.parentElement.querySelector('button').classList.replace('bg-gold-accent', 'bg-gray-500');
+            document.getElementById('guest-name-display').innerText = name;
+            document.getElementById('input-modal').style.display = 'none';
+            document.getElementById('card-content').classList.remove('hidden');
+            window.scrollTo(0,0);
         }
 
-        /**
-         * Simple custom alert/message box function (since alert() is forbidden)
-         */
-        function alertMessage(message) {
-            // Check if a message box already exists
-            let msgBox = document.getElementById('custom-message-box');
-            if (!msgBox) {
-                msgBox = document.createElement('div');
-                msgBox.id = 'custom-message-box';
-                msgBox.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-maroon-dark p-4 rounded-lg shadow-2xl z-50 text-center font-bold transition-opacity duration-500 opacity-0';
-                document.body.appendChild(msgBox);
-            }
-            
-            msgBox.textContent = message;
-            msgBox.classList.remove('opacity-0');
-            msgBox.classList.add('opacity-100');
-            
-            setTimeout(() => {
-                msgBox.classList.remove('opacity-100');
-                msgBox.classList.add('opacity-0');
-            }, 3000); // Hide after 3 seconds
+        function confirmPresence() {
+            const guestName = document.getElementById('guest-name-display').innerText;
+            const waBtn = document.getElementById('wa-confirm');
+            waBtn.classList.remove('hidden');
+            const message = encodeURIComponent(`सादर प्रणाम, मैं ${guestName}। कामनी और राजनन्दिनी के शुभ विवाह का डिजिटल निमंत्रण प्राप्त हुआ। बहुत-बहुत बधाई! हम सपरिवार आशीर्वाद देने जरूर पहुँचेंगे।`);
+            waBtn.href = `https://wa.me/918009676915?text=${message}`;
+            alert("धन्यवाद! अब आप नीचे दिए गए WhatsApp बटन से मैसेज भेज सकते हैं।");
         }
-
     </script>
 </body>
 </html>
+
+```
+
+    
